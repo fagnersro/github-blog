@@ -1,9 +1,10 @@
-import Home from '../page/Home'
+import { globalStyles } from '../styles/global'
 
+globalStyles()
 export default function Root() {
   return (
     <>
-      <Home />
+      <h1>Hello</h1>
     </>
   )
 }
