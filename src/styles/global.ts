@@ -11,6 +11,9 @@ export const globalStyles = globalCss({
   body: {
     backgroundColor: '$baseBackground',
     overflowX: 'hidden',
+
+    height: '100vh',
+    width: '100vw',
   },
 
   'body, input, textarea,button': {

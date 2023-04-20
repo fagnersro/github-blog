@@ -1,7 +1,10 @@
+import Aside from './components/Aside'
+import { ContainerHomer } from './styles'
+
 export default function Home() {
   return (
-    <>
-      <h1>Hello is Home</h1>
-    </>
+    <ContainerHomer>
+      <Aside />
+    </ContainerHomer>
   )
 }
