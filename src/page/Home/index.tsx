@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Aside from './components/Aside'
 import {
   ContainerHomer,
@@ -25,35 +26,39 @@ export default function Home() {
         </DowContentInput>
       </ContinerInput>
       <ContainerPost>
-        <Post>
-          <div>
+        <Link to={`/post/1`}>
+          <Post>
             <div>
-              <h2>JavaScript data types and data structures</h2>
+              <div>
+                <h2>JavaScript data types and data structures</h2>
+              </div>
+
+              <span>Há 1 dia</span>
             </div>
+            <p>
+              Programming languages all have built-in data structures, but these
+              often differ from one language to another. This article attempts
+              to list the built-in data structures available in
+            </p>
+          </Post>
+        </Link>
 
-            <span>Há 1 dia</span>
-          </div>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in
-          </p>
-        </Post>
-
-        <Post>
-          <div>
+        <Link to={`/post/2`}>
+          <Post>
             <div>
-              <h2>JavaScript data types and data structures</h2>
-            </div>
+              <div>
+                <h2>JavaScript data types and data structures</h2>
+              </div>
 
-            <span>Há 1 dia</span>
-          </div>
-          <p>
-            Programming languages all have built-in data structures, but these
-            often differ from one language to another. This article attempts to
-            list the built-in data structures available in
-          </p>
-        </Post>
+              <span>Há 1 dia</span>
+            </div>
+            <p>
+              Programming languages all have built-in data structures, but these
+              often differ from one language to another. This article attempts
+              to list the built-in data structures available in
+            </p>
+          </Post>
+        </Link>
 
         <Post>
           <div>
