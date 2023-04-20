@@ -24,3 +24,8 @@ export const ContainerImg = styled('div', {
     marginTop: 'calc(0px - 3.8rem - 6px)',
   },
 })
+
+export const FooterRoot = styled('footer', {
+  height: '5.75rem',
+  width: '100%',
+})

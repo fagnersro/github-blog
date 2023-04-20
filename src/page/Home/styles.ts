@@ -5,20 +5,21 @@ export const ContainerHomer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 
-  height: '100vh',
+  height: '100%',
   marginTop: 'calc(0px - 5.8rem - 6px)',
   maxWidth: '54.1rem',
   width: '100%',
 })
 
 export const ContinerInput = styled('label', {
-  height: '5.688rem',
+  // border: '1px solid red',
 
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
 
   marginTop: '4.75rem',
+  height: '5.688rem',
   maxWidth: '54.1rem',
   width: '100%',
 })
@@ -78,5 +79,60 @@ export const DowContentInput = styled('div', {
     '&::placeholder': {
       color: '$baseLabel',
     },
+  },
+})
+
+export const ContainerPost = styled('main', {
+  // border: '1px solid gold',
+
+  display: 'grid',
+  gridTemplateColumns: 'repeat(2, 1fr)',
+  gap: '1.8rem',
+
+  marginTop: '3rem',
+  height: '100%',
+  width: '100%',
+})
+
+export const Post = styled('div', {
+  backgroundColor: '$basePost',
+  borderRadius: '0.625rem',
+  padding: '32px',
+
+  height: '16.25rem',
+  width: '26rem',
+
+  div: {
+    display: 'flex',
+    justifyContent: 'space-between',
+
+    div: {
+      width: '17.688rem',
+
+      h2: {
+        color: '$baseTitle',
+        fontStyle: 'normal',
+        fontWeight: 700,
+        fontSize: '20px',
+        lineHeight: '160%',
+      },
+    },
+
+    span: {
+      color: '$baseSpan',
+      fontStyle: 'normal',
+      fontWeight: 400,
+      fontSize: '14px',
+      lineHeight: '160%',
+    },
+  },
+
+  p: {
+    color: '$baseText',
+    textAlign: 'left',
+
+    marginTop: '1.25rem',
+    height: '7rem',
+    width: '22rem',
   },
 })
