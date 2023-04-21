@@ -8,6 +8,10 @@ export const globalStyles = globalCss({
     fontFamily: '"Nunito", sans-serif',
   },
 
+  a: {
+    textDecoration: 'none',
+  },
+
   body: {
     backgroundColor: '$baseBackground',
     overflowX: 'hidden',
