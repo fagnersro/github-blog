@@ -1,7 +1,4 @@
 import { styled } from '../../../../styles'
-import GithubBrands from '../../../../assets/GithubBrands.svg'
-import InfoCompany from '../../../../assets/InfoCompany.svg'
-import Followers from '../../../../assets/InfoFollowers.svg'
 
 export const ContainerAside = styled('aside', {
   backgroundColor: '$baseProfile',
@@ -68,8 +65,8 @@ export const TitleContent = styled('div', {
     color: '$blue',
 
     display: 'flex',
-    alignItems: 'stretch',
-    justifyContent: 'end',
+    alignItems: 'center',
+    justifyContent: 'center',
     gap: '0.5rem',
 
     textTransform: 'uppercase',
@@ -78,10 +75,6 @@ export const TitleContent = styled('div', {
     fontWeight: 700,
     fontSize: '0.75rem',
     lineHeight: '160%',
-
-    svg: {
-      fontSize: '0.95rem',
-    },
   },
 })
 
@@ -119,30 +112,4 @@ export const Info = styled('div', {
     fontSize: '16px',
     lineHeight: '160%',
   },
-})
-
-export const IconInfoGit = styled('div', {
-  backgroundImage: `url(${GithubBrands})`,
-  backgroundSize: '1.125rem',
-
-  height: '1.125rem',
-  width: '1.125rem',
-})
-
-export const IconInfoCompany = styled('div', {
-  backgroundImage: `url(${InfoCompany})`,
-  backgroundSize: '0.9rem',
-  backgroundRepeat: 'no-repeat',
-
-  height: '1.125rem',
-  width: '1.125rem',
-})
-
-export const IconInfoFollowers = styled('div', {
-  backgroundImage: `url(${Followers})`,
-  backgroundSize: '1.125rem',
-  backgroundRepeat: 'no-repeat',
-
-  height: '1.125rem',
-  width: '1.125rem',
 })

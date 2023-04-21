@@ -1,12 +1,15 @@
-import { ArrowSquareOut } from '@phosphor-icons/react'
 import Avatar from '../../../../assets/avatar.png'
+import {
+  iconGit,
+  iconArrowUp,
+  iconBuild,
+  iconUser,
+} from '../../../../assets/Icons/'
+
 import {
   BioContent,
   ContainerAside,
   ContentAside,
-  IconInfoCompany,
-  IconInfoFollowers,
-  IconInfoGit,
   Info,
   TitleContent,
   WrapperAside,
@@ -24,9 +27,7 @@ export default function Aside() {
                 <h1>Cameron Williamson</h1>
               </div>
               <div>
-                <span>
-                  github <ArrowSquareOut weight="bold" />
-                </span>
+                <span>github{iconArrowUp}</span>
               </div>
             </TitleContent>
 
@@ -39,18 +40,9 @@ export default function Aside() {
             </BioContent>
 
             <Info>
-              <span>
-                <IconInfoGit></IconInfoGit>
-                cameronwll
-              </span>
-              <span>
-                <IconInfoCompany></IconInfoCompany>
-                Rocketseat
-              </span>
-              <span>
-                <IconInfoFollowers></IconInfoFollowers>
-                32 seguidores
-              </span>
+              <span>{iconGit}cameronwll</span>
+              <span>{iconBuild}Rocketseat</span>
+              <span>{iconUser}32 seguidores</span>
             </Info>
           </ContentAside>
         </WrapperAside>
