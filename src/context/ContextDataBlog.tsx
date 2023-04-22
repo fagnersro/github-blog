@@ -5,10 +5,10 @@ import {
   useEffect,
   useState,
 } from 'react'
-import { api } from '../API/axios'
+import { api, apiPost } from '../API/axios'
 
 export interface DataUser {
-  id: string
+  id: number
   avatar_url: string
   name: string
   html_url: string
@@ -18,12 +18,20 @@ export interface DataUser {
   followers: string
 }
 
+export interface DataPost {
+  id: number
+  title: string
+  body: string
+  number: number
+}
+
 interface ProviderDataBlogProps {
   children: ReactNode
 }
 
 interface ContextDataBlogTypes {
   dataUser: DataUser | undefined
+  dataPost: DataPost[] | undefined
 }
 
 export const ContextDataBlog = createContext<ContextDataBlogTypes>(
@@ -32,6 +40,15 @@ export const ContextDataBlog = createContext<ContextDataBlogTypes>(
 
 export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
   const [dataUser, setDataUser] = useState<DataUser>()
+  const [dataPost, setDataPost] = useState<DataPost[]>([] as DataPost[])
+
+  const fatchDataPost = useCallback(async () => {
+    const response = await apiPost.get(
+      `issues?q=repo:fagnersro/Challenge-Github-Blog`,
+    )
+    setDataPost(response.data.items)
+  }, [])
+  console.log(dataPost)
 
   const fatchDataUser = useCallback(async () => {
     const response = await api.get('/users/fagnersro')
@@ -65,11 +82,13 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
   useEffect(() => {
     fatchDataUser()
   }, [fatchDataUser])
-
-  console.log(dataUser)
+  
+  useEffect(() => {
+    fatchDataPost()
+  }, [fatchDataPost])
 
   return (
-    <ContextDataBlog.Provider value={{ dataUser }}>
+    <ContextDataBlog.Provider value={{ dataUser, dataPost }}>
       {children}
     </ContextDataBlog.Provider>
   )

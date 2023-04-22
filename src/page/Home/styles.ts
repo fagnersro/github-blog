@@ -134,5 +134,7 @@ export const Post = styled('div', {
     marginTop: '1.25rem',
     height: '7rem',
     width: '22rem',
+    overflowY: 'hidden',
+    overflowX: 'hidden',
   },
 })
