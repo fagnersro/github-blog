@@ -9,7 +9,9 @@ export const globalStyles = globalCss({
   },
 
   a: {
+    all: 'unset',
     textDecoration: 'none',
+    cursor: 'pointer',
   },
 
   body: {

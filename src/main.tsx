@@ -2,7 +2,7 @@ import ReactDOM from 'react-dom/client'
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import ErrorPage from './error-page'
+import ErrorPage from './routes/error-page'
 import Root from './routes/root'
 
 import Post from './page/Post'
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: 'home',
+        path: '/',
         element: <Home />,
       },
       {

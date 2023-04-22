@@ -1,4 +1,5 @@
-import Avatar from '../../../../assets/avatar.png'
+import { useContext } from 'react'
+
 import {
   iconGit,
   iconArrowUp,
@@ -14,35 +15,45 @@ import {
   TitleContent,
   WrapperAside,
 } from './styles'
+import { ContextDataBlog } from '../../../../context/ContextDataBlog'
 
 export default function Aside() {
+  const { dataUser } = useContext(ContextDataBlog)
+
   return (
     <>
       <ContainerAside>
         <WrapperAside>
-          <img src={Avatar} alt="" />
+          <img src={dataUser?.avatar_url} alt="" />
           <ContentAside>
             <TitleContent>
               <div>
-                <h1>Cameron Williamson</h1>
+                <h1>{dataUser?.name}</h1>
               </div>
               <div>
-                <span>github{iconArrowUp}</span>
+                <a href={dataUser?.html_url} target="_blank" rel="noreferrer">
+                  <span>github{iconArrowUp}</span>
+                </a>
               </div>
             </TitleContent>
 
             <BioContent>
-              <span>
-                Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-                viverra massa quam dignissim aenean malesuada suscipit. Nunc,
-                volutpat pulvinar vel mass.
-              </span>
+              <span>{dataUser?.bio}</span>
             </BioContent>
 
             <Info>
-              <span>{iconGit}cameronwll</span>
-              <span>{iconBuild}Rocketseat</span>
-              <span>{iconUser}32 seguidores</span>
+              <span>
+                {iconGit}
+                {dataUser?.login}
+              </span>
+              <span>
+                {iconBuild}
+                {dataUser?.company}
+              </span>
+              <span>
+                {iconUser}
+                {dataUser?.followers} seguidores
+              </span>
             </Info>
           </ContentAside>
         </WrapperAside>
