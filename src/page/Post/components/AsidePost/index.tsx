@@ -6,23 +6,38 @@ import {
   iconCalendar,
   iconComment,
 } from '../../../../assets/Icons'
+import { useContext } from 'react'
+import { ContextDataBlog } from '../../../../context/ContextDataBlog'
+import { Link } from 'react-router-dom'
 
 export default function AsidePost() {
+  const { dataFullPost } = useContext(ContextDataBlog)
+
   return (
     <ContainerAsidePost>
       <nav>
-        <span>{iconChevron}voltar</span>
+        <Link to="/">
+          <span>{iconChevron}voltar</span>
+        </Link>
         <div>
-          <span>ver no github{iconArrowUp}</span>
+          <a href={dataFullPost?.html_url} target="_blank" rel="noreferrer">
+            <span>ver no github{iconArrowUp}</span>
+          </a>
         </div>
       </nav>
 
-      <h2>JavaScript data types and data structures</h2>
+      <h2>{dataFullPost?.title}</h2>
 
       <ContainerIcon>
-        <span>{iconGit}cameronwll</span>
-        <span>{iconCalendar}Há 1 dia</span>
-        <span>{iconComment}5 comentários</span>
+        <span>
+          {iconGit}
+          {dataFullPost?.user.login}
+        </span>
+        <span>{iconCalendar}1 min</span>
+        <span>
+          {iconComment}
+          {dataFullPost?.comments} comentários
+        </span>
       </ContainerIcon>
     </ContainerAsidePost>
   )

@@ -83,8 +83,6 @@ export const DowContentInput = styled('div', {
 })
 
 export const ContainerPost = styled('main', {
-  // border: '1px solid gold',
-
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   gap: '1.8rem',
@@ -95,6 +93,7 @@ export const ContainerPost = styled('main', {
 })
 
 export const Post = styled('div', {
+  border: '2px solid transparent',
   backgroundColor: '$basePost',
   borderRadius: '0.625rem',
   padding: '32px',
@@ -136,5 +135,10 @@ export const Post = styled('div', {
     width: '22rem',
     overflowY: 'hidden',
     overflowX: 'hidden',
+  },
+
+  '&:hover': {
+    border: '2px solid $baseLabel',
+    transition: 'border 0.2s',
   },
 })

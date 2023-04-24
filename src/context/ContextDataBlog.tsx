@@ -1,38 +1,12 @@
-import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import { api, apiPost } from '../API/axios'
-
-export interface DataUser {
-  id: number
-  avatar_url: string
-  name: string
-  html_url: string
-  bio: string
-  login: string
-  company: string
-  followers: string
-}
-
-export interface DataPost {
-  id: number
-  title: string
-  body: string
-  number: number
-}
-
-interface ProviderDataBlogProps {
-  children: ReactNode
-}
-
-interface ContextDataBlogTypes {
-  dataUser: DataUser | undefined
-  dataPost: DataPost[] | undefined
-}
+import {
+  ContextDataBlogTypes,
+  DataFullPost,
+  DataPost,
+  DataUser,
+  ProviderDataBlogProps,
+} from './TypeContextDataBlog'
 
 export const ContextDataBlog = createContext<ContextDataBlogTypes>(
   {} as ContextDataBlogTypes,
@@ -41,6 +15,40 @@ export const ContextDataBlog = createContext<ContextDataBlogTypes>(
 export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
   const [dataUser, setDataUser] = useState<DataUser>()
   const [dataPost, setDataPost] = useState<DataPost[]>([] as DataPost[])
+  const [dataFullPost, setDataFullPost] = useState<DataFullPost>()
+
+  const fatchDataFullPost = useCallback(
+    async (issueNumber: string | undefined) => {
+      const response = await api.get(
+        `/repos/fagnersro/Challenge-Github-Blog/issues/${issueNumber}`,
+      )
+
+      /* eslint-disable */
+      const {
+        html_url,
+        title,
+        user: { login },
+        comments,
+        body,
+        created_at
+      }:DataFullPost = response.data
+
+      const responseDataFullPost: DataFullPost = {
+        html_url,
+        title,
+        user: { login },
+        comments,
+        body,
+        created_at
+      }
+      console.log(responseDataFullPost)
+      setDataFullPost(responseDataFullPost)
+
+    },
+    [],
+  )
+
+  console.log(dataFullPost)
 
   const fatchDataPost = useCallback(async () => {
     const response = await apiPost.get(
@@ -48,7 +56,6 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
     )
     setDataPost(response.data.items)
   }, [])
-  console.log(dataPost)
 
   const fatchDataUser = useCallback(async () => {
     const response = await api.get('/users/fagnersro')
@@ -88,7 +95,7 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
   }, [fatchDataPost])
 
   return (
-    <ContextDataBlog.Provider value={{ dataUser, dataPost }}>
+    <ContextDataBlog.Provider value={{ dataUser, dataPost, dataFullPost, fatchDataFullPost }}>
       {children}
     </ContextDataBlog.Provider>
   )

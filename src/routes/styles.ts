@@ -6,6 +6,7 @@ export const ContainerRoot = styled('div', {
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
+  height: '100%',
 })
 
 export const ContainerImg = styled('div', {

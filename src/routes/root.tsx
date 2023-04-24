@@ -6,7 +6,6 @@ import { ContainerRoot, ContainerImg, FooterRoot } from './styles'
 import { ProviderDataBlog } from '../context/ContextDataBlog'
 
 globalStyles()
-
 export default function Root() {
   return (
     <ContainerRoot>
