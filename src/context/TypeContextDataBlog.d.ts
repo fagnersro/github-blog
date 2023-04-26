@@ -34,7 +34,7 @@ export interface ContextDataBlogTypes {
   dataPost: DataPost[] | undefined
   dataFullPost: DataFullPost | undefined
   fatchDataFullPost(issueNumber: string | undefined): Promise<void>
-  fatchDataPost(data: string): Promise<void>
+  fatchDataPost(query: string): Promise<void>
 }
 
 export interface ProviderDataBlogProps {

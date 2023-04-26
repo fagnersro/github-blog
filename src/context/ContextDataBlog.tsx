@@ -40,14 +40,14 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
         body,
         created_at
       }
-      console.log(responseDataFullPost)
+
       setDataFullPost(responseDataFullPost)
 
     },
     [],
   )
 
-  console.log(dataFullPost)
+
 
   const fatchDataPost = useCallback(async (query = "") => {
 

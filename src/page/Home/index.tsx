@@ -31,7 +31,6 @@ export default function Home() {
   })
 
   function handleSearchIssues(data: SearchFormInputs) {
-    console.log(data.query)
     fatchDataPost(data.query)
     reset()
   }
