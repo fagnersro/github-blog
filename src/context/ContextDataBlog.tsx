@@ -22,7 +22,6 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
       const response = await api.get(
         `/repos/fagnersro/Challenge-Github-Blog/issues/${issueNumber}`,
       )
-
       /* eslint-disable */
       const {
         html_url,
@@ -50,16 +49,19 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
 
   console.log(dataFullPost)
 
-  const fatchDataPost = useCallback(async () => {
+  const fatchDataPost = useCallback(async (query = "") => {
+
     const response = await apiPost.get(
-      `issues?q=repo:fagnersro/Challenge-Github-Blog`,
+      `issues?q=${
+        query ? query : ""
+      }repo:fagnersro/Challenge-Github-Blog`,
     )
+
     setDataPost(response.data.items)
   }, [])
 
   const fatchDataUser = useCallback(async () => {
     const response = await api.get('/users/fagnersro')
-
     /* eslint-disable */
     const {
       id,
@@ -95,7 +97,7 @@ export function ProviderDataBlog({ children }: ProviderDataBlogProps) {
   }, [fatchDataPost])
 
   return (
-    <ContextDataBlog.Provider value={{ dataUser, dataPost, dataFullPost, fatchDataFullPost }}>
+    <ContextDataBlog.Provider value={{ dataUser, dataPost, dataFullPost, fatchDataFullPost, fatchDataPost }}>
       {children}
     </ContextDataBlog.Provider>
   )

@@ -1,7 +1,6 @@
 import { styled } from '../../styles'
 
 export const ContainerHomer = styled('div', {
-  // border: '1px solid red',
   display: 'flex',
   flexDirection: 'column',
 
@@ -12,8 +11,6 @@ export const ContainerHomer = styled('div', {
 })
 
 export const ContinerInput = styled('label', {
-  // border: '1px solid red',
-
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -54,7 +51,7 @@ export const TopContentInput = styled('div', {
   },
 })
 
-export const DowContentInput = styled('div', {
+export const DowContentInput = styled('form', {
   backgroundColor: '$baseInput',
   border: '1px solid $baseBorder',
   borderRadius: '6px',

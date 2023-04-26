@@ -1,5 +1,10 @@
 import Aside from './components/Aside'
 import ReactMarkdow from 'react-markdown'
+
+import { useForm } from 'react-hook-form'
+import * as z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+
 import { ContextDataBlog } from '../../context/ContextDataBlog'
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
@@ -12,8 +17,24 @@ import {
   TopContentInput,
 } from './styles'
 
+const searcFormSchema = z.object({
+  query: z.string(),
+})
+
+export type SearchFormInputs = z.infer<typeof searcFormSchema>
+
 export default function Home() {
-  const { dataPost } = useContext(ContextDataBlog)
+  const { dataPost, fatchDataPost } = useContext(ContextDataBlog)
+
+  const { register, handleSubmit, reset } = useForm<SearchFormInputs>({
+    resolver: zodResolver(searcFormSchema),
+  })
+
+  function handleSearchIssues(data: SearchFormInputs) {
+    console.log(data.query)
+    fatchDataPost(data.query)
+    reset()
+  }
 
   return (
     <ContainerHomer>
@@ -26,8 +47,12 @@ export default function Home() {
             <span>{dataPost?.length} publicações</span>
           </div>
         </TopContentInput>
-        <DowContentInput>
-          <input type="text" placeholder="Buscar conteúdo" />
+        <DowContentInput onSubmit={handleSubmit(handleSearchIssues)}>
+          <input
+            type="text"
+            placeholder="Buscar conteúdo"
+            {...register('query')}
+          />
         </DowContentInput>
       </ContinerInput>
       <ContainerPost>
